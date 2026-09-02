@@ -1,0 +1,12 @@
+Phase 1: Rest API Development (Laravel + MySql)
+Step 1.1: Setup Laravel Project
+composer create-project laravel/laravel blog-api
+cd blog-api
+composer require laravel/sanctum
+composer require intervention/image
+
+Step 1.2: Configure Database (.env)
+Step 1.3: Create Models and Migrations
+php artisan make:model User -m
+php artisan make:model Post -m
+php artisan make:model Comment -m

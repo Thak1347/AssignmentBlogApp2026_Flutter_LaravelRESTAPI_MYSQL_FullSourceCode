@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "927301585971",
+    "project_id": "blog-app-notifications",
+    "storage_bucket": "blog-app-notifications.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:927301585971:android:5d95d5a96fd96c1eada746",
+        "android_client_info": {
+          "package_name": "com.example.blog_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbd_tppuBMWmweb17vdqtPifMPnUtsMGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

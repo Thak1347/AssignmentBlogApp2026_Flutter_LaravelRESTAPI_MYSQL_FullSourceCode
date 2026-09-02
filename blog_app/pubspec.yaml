@@ -1,0 +1,78 @@
+name: blog_app
+description: "A modern blog application with Flutter and GetX"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI Icons
+  cupertino_icons: ^1.0.8
+
+  # State Management
+  get: ^4.7.3
+
+  # Networking
+  dio: ^5.11.0
+  connectivity_plus: ^7.3.1
+
+  # Local Storage
+  get_storage: ^2.1.1
+  shared_preferences: ^2.5.5
+
+  # Image Handling
+  image_picker: ^1.2.3
+  image_cropper: ^12.2.1
+
+  # UI Components
+  flutter_svg: ^2.3.0
+  cached_network_image: ^3.4.1
+  shimmer: ^3.0.0
+  flutter_animate: ^4.5.2
+
+  # Utility
+  intl: ^0.20.3
+  url_launcher: ^6.3.2
+  share_plus: ^13.3.0
+
+  # Notifications
+  flutter_local_notifications: ^22.3.0
+
+  # Timezone support for scheduled notifications
+  timezone: ^0.11.1
+
+  # Permission handling for Android 13+
+  permission_handler: ^11.3.1
+
+  # Firebase
+  firebase_core: ^4.14.0
+  firebase_messaging: ^16.6.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+  # App Icon Generator
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+  uses-material-design: true
+
+  # Assets
+  # assets:
+  #   - assets/images/
+
+# Flutter Launcher Icons Configuration
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/blog_app_icon.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/icons/blog_app_icon_foreground.png"
