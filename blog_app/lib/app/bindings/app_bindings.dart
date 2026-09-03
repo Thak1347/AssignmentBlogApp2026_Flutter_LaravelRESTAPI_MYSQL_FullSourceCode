@@ -6,7 +6,6 @@ import '../data/providers/comment_provider.dart';
 import '../data/providers/post_provider.dart';
 import '../data/services/api_service.dart';
 import '../data/services/storage_service.dart';
-import '../services/notification_service.dart';
 import '../modules/auth/controllers/auth_controller.dart';
 import '../modules/home/controllers/home_controller.dart';
 import '../modules/posts/controllers/posts_controller.dart';
