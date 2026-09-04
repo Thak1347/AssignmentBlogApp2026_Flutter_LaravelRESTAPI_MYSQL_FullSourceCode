@@ -32,17 +32,17 @@ class ApiService extends GetxService {
           if (token != null && token.isNotEmpty) {
             options.headers['Authorization'] = 'Bearer $token';
           }
-          log('🚀 Request: ${options.method} ${options.path}');
+          log('Request: ${options.method} ${options.path}');
           return handler.next(options);
         },
         onResponse: (response, handler) {
           log(
-            '✅ Response: ${response.statusCode} ${response.requestOptions.path}',
+            'Response: ${response.statusCode} ${response.requestOptions.path}',
           );
           return handler.next(response);
         },
         onError: (error, handler) {
-          log('❌ Error: ${error.response?.statusCode} ${error.message}');
+          log('Error: ${error.response?.statusCode} ${error.message}');
           if (error.response?.statusCode == 401) {
             _storageService.clearAll();
             Get.offAllNamed('/login');
