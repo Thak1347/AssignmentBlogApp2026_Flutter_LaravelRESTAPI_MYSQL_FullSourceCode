@@ -115,7 +115,7 @@ void closeSearch() {
 
       errorMessage.value = '';
 
-      // FIX: Remove page and perPage parameters
+      //
       final response = await _postProvider.getPosts();
 
       final postsData = ResponseHelper.extractList(response);

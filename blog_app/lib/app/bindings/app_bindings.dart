@@ -15,7 +15,7 @@ import '../modules/theme/controllers/theme_controller.dart';
 class AppBindings extends Bindings {
   @override
   void dependencies() {
-    // ========== SERVICES (Singleton - Permanent) ==========
+    // Services (Singleton - Permanent)
 
     // Storage Service - For local data persistence
     Get.put<StorageService>(StorageService(), permanent: true);
@@ -29,7 +29,7 @@ class AppBindings extends Bindings {
     // Theme Controller - For dark/light mode
     Get.put<ThemeController>(ThemeController(), permanent: true);
 
-    // ========== PROVIDERS (Singleton - Permanent) ==========
+    /// Provider (Singleton - Permanent)
 
     // Auth Provider - For authentication API calls
     Get.put<AuthProvider>(AuthProvider(), permanent: true);
@@ -40,7 +40,7 @@ class AppBindings extends Bindings {
     // Comment Provider - For comment API calls
     Get.put<CommentProvider>(CommentProvider(), permanent: true);
 
-    // ========== CONTROLLERS (Lazy Loading) ==========
+    // Controller (Lazy Loading)
 
     // Auth Controller - Authentication logic
     Get.lazyPut<AuthController>(() => AuthController(), fenix: true);

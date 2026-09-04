@@ -1140,6 +1140,9 @@ The phone and computer must be connected to the same network.
 
 The API can be tested using Postman before connecting it to Flutter.
 
+
+**Postman Collection:** [Open Postman Collection](https://chounpithaks-team.postman.co/workspace/My-Workspace~7dfdf271-9c38-49ca-8907-bfef6c143b90/collection/47854027-14523002-5908-4fb9-85c6-9e4620fbb823?action=share&source=copy-link&creator=47854027)
+
 Main API operations:
 
 ```text
@@ -1188,7 +1191,7 @@ Additional endpoints such as post update can be used when supported by the backe
 | Snackbar Feedback | ✅ |
 | Theme Controller | ✅ |
 | Local Notifications | ✅ |
-| Firebase Notifications | ✅ |
+| Firebase Notifications |  |
 
 ---
 
@@ -1196,73 +1199,61 @@ Additional endpoints such as post update can be used when supported by the backe
 
 Add your application screenshots here before submitting the project.
 
-Recommended screenshots:
+### 🚀 Splash Screen
 
-### Login
+![Splash Screen](docs/screenshots/splash_screen.png)
 
-```text
-docs/screenshots/login.png
-```
+![Splash Screen 01](docs/screenshots/splash_screen_01.png)
 
-### Register
+### 🔐 Authentication
 
-```text
-docs/screenshots/register.png
-```
+#### Login
 
-### Home
-
-```text
-docs/screenshots/home.png
-```
-
-### Post Details
-
-```text
-docs/screenshots/post_details.png
-```
-
-### Create Post
-
-```text
-docs/screenshots/create_post.png
-```
-
-### Profile
-
-```text
-docs/screenshots/profile.png
-```
-
-### Comments
-
-```text
-docs/screenshots/comments.png
-```
-
-### Delete Confirmation
-
-```text
-docs/screenshots/delete_confirmation.png
-```
-
-Example Markdown:
-
-```markdown
-## 📸 Screenshots
-
-### Login
 ![Login](docs/screenshots/login.png)
 
-### Home
+#### Register
+
+![Register](docs/screenshots/register.png)
+
+### 🏠 Home
+
 ![Home](docs/screenshots/home.png)
 
-### Create Post
+### 🔎 Search
+
+![Search](docs/screenshots/search.png)
+
+### 📝 Create Post
+
 ![Create Post](docs/screenshots/create_post.png)
 
-### Profile
+### 📄 Post Details
+
+![Post Details](docs/screenshots/post_detail.png)
+
+### 💬 Comments
+
+![Comments](docs/screenshots/comments.png)
+
+### 📭 No Comments State
+
+![No Comments Yet](docs/screenshots/no_comment.png)
+
+### 👤 Profile
+
 ![Profile](docs/screenshots/profile.png)
-```
+
+### 🔔 Notification
+
+![Notification](docs/screenshots/notification.png)
+
+### ⏳ Loading State
+
+![Loading Shimmer](docs/screenshots/shimmer.png)
+
+### ❌ Error State
+
+![Something Went Wrong](docs/screenshots/somethingwentwrong.png)
 
 ---
 
@@ -1289,11 +1280,9 @@ Recommended demonstration sequence:
 14. Logout
 ```
 
-Demo video:
+**Demo Video:** [Watch on YouTube](https://youtu.be/m7KKwFBxAx8)
 
-```text
-[Add YouTube :  / Google Drive link here: https://docs.google.com/document/d/1w-LUS0R4M_b1EVisrlX4pqFRuARTXIXYnUoL5HqTB9M/edit?tab=t.0 ]
-```
+**Presentation Video:** [Watch on YouTube](https://youtu.be/m7KKwFBxAx8)
 
 ---
 

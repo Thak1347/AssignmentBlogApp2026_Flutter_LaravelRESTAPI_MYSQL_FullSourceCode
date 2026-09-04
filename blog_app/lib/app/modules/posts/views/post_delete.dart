@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import '../controllers/posts_controller.dart';
-import '../../../constants/app_colors.dart';
 
 class PostDeleteView extends GetView<PostsController> {
   const PostDeleteView({super.key});

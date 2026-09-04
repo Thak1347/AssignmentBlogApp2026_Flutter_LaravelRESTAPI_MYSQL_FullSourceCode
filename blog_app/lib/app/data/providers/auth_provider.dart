@@ -27,14 +27,14 @@ class AuthProvider extends GetxService {
         },
       );
 
-      log('✅ Registration successful for: $email');
+      log('Registration successful for: $email');
 
       return Map<String, dynamic>.from(response.data);
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Registration error: $e');
+      log('Registration error: $e');
       throw e.toString();
     }
   }
@@ -50,13 +50,13 @@ class AuthProvider extends GetxService {
         '/login',
         data: {'email': email, 'password': password},
       );
-      log('✅ Login successful for: $email');
+      log('Login successful for: $email');
       return response.data;
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Login error: $e');
+      log('Login error: $e');
       throw e.toString();
     }
   }
@@ -65,13 +65,13 @@ class AuthProvider extends GetxService {
   Future<void> logout() async {
     try {
       await _apiService.dio.post('/logout');
-      log('✅ Logout successful');
+      log('Logout successful');
     } on DioException catch (e) {
       _handleDioError(e);
       // Don't throw on logout error, just log it
-      log('⚠️ Logout error: ${e.message}');
+      log('Logout error: ${e.message}');
     } catch (e) {
-      log('⚠️ Logout error: $e');
+      log('Logout error: $e');
     }
   }
 
@@ -79,13 +79,13 @@ class AuthProvider extends GetxService {
   Future<Map<String, dynamic>> getCurrentUser() async {
     try {
       final response = await _apiService.dio.get('/current-user');
-      log('✅ Current user fetched successfully');
+      log('Current user fetched successfully');
       return response.data;
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Get current user error: $e');
+      log('Get current user error: $e');
       throw e.toString();
     }
   }
@@ -94,13 +94,13 @@ class AuthProvider extends GetxService {
   Future<Map<String, dynamic>> refreshToken() async {
     try {
       final response = await _apiService.dio.post('/refresh-token');
-      log('✅ Token refreshed successfully');
+      log('Token refreshed successfully');
       return response.data;
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Refresh token error: $e');
+      log('Refresh token error: $e');
       throw e.toString();
     }
   }
@@ -114,24 +114,22 @@ class AuthProvider extends GetxService {
       );
       return response.data['available'] ?? true;
     } catch (e) {
-      log('⚠️ Email check error: $e');
+      log('Email check error: $e');
       return true; // Assume available on error
     }
   }
 
-  // ============================================================
-  // PRIVATE HELPER METHODS
-  // ============================================================
+  // Private helper methods
 
   /// Handle Dio errors with logging
   void _handleDioError(DioException e) {
-    log('❌ Dio Error: ${e.response?.statusCode} - ${e.message}');
+    log('Dio Error: ${e.response?.statusCode} - ${e.message}');
     if (e.response != null) {
-      log('📦 Error Response Data: ${e.response?.data}');
+      log('Error Response Data: ${e.response?.data}');
     }
   }
 
-  /// Extract user-friendly error message from DioException
+  /// Extract user friendly error message from DioException
   String _extractErrorMessage(DioException e) {
     if (e.response != null) {
       final data = e.response?.data;

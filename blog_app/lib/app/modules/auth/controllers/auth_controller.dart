@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -37,13 +36,9 @@ class AuthController extends GetxController {
     }
   }
 
-  // ============================================================
-  // LOGIN
-  // ============================================================
-
+  /// Login
   Future<void> login() async {
-    if (loginEmail.value.trim().isEmpty ||
-        loginPassword.value.isEmpty) {
+    if (loginEmail.value.trim().isEmpty || loginPassword.value.isEmpty) {
       errorMessage.value = 'Please fill all fields';
       return;
     }
@@ -61,9 +56,7 @@ class AuthController extends GetxController {
         throw Exception('Login failed. Token was not returned.');
       }
 
-      _storageService.saveToken(
-        response['token'].toString(),
-      );
+      _storageService.saveToken(response['token'].toString());
 
       if (response['user'] == null) {
         throw Exception('Login failed. User data was not returned.');
@@ -93,18 +86,13 @@ class AuthController extends GetxController {
     }
   }
 
-  // ============================================================
-  // REGISTER
-  // ============================================================
-
+  /// Register
   Future<void> register() async {
     final name = registerName.value.trim();
     final email = registerEmail.value.trim();
-    final emailConfirmation =
-        registerEmailConfirmation.value.trim();
+    final emailConfirmation = registerEmailConfirmation.value.trim();
     final password = registerPassword.value;
-    final passwordConfirmation =
-        registerPasswordConfirmation.value;
+    final passwordConfirmation = registerPasswordConfirmation.value;
 
     // Required fields
     if (name.isEmpty ||
@@ -130,8 +118,7 @@ class AuthController extends GetxController {
 
     // Password length
     if (password.length < 8) {
-      errorMessage.value =
-          'Password must be at least 8 characters';
+      errorMessage.value = 'Password must be at least 8 characters';
       return;
     }
 
@@ -148,19 +135,13 @@ class AuthController extends GetxController {
       );
 
       if (response['token'] == null) {
-        throw Exception(
-          'Registration failed. Token was not returned.',
-        );
+        throw Exception('Registration failed. Token was not returned.');
       }
 
-      _storageService.saveToken(
-        response['token'].toString(),
-      );
+      _storageService.saveToken(response['token'].toString());
 
       if (response['user'] == null) {
-        throw Exception(
-          'Registration failed. User data was not returned.',
-        );
+        throw Exception('Registration failed. User data was not returned.');
       }
 
       final userData = UserModel.fromJson(
@@ -169,7 +150,7 @@ class AuthController extends GetxController {
 
       user.value = userData;
 
-       _storageService.saveUser(userData);
+      _storageService.saveUser(userData);
 
       Get.offAllNamed(AppRoutes.home);
     } catch (e) {
@@ -187,17 +168,14 @@ class AuthController extends GetxController {
     }
   }
 
-  // ============================================================
-  // LOGOUT
-  // ============================================================
-
+  /// Logout
   Future<void> logout() async {
     try {
       await _authProvider.logout();
     } catch (e) {
       debugPrint('Logout error: $e');
     } finally {
-       _storageService.clearAll();
+      _storageService.clearAll();
 
       user.value = null;
 
@@ -213,10 +191,7 @@ class AuthController extends GetxController {
     }
   }
 
-  // ============================================================
-  // CURRENT USER
-  // ============================================================
-
+  // Current user
   Future<void> getCurrentUser() async {
     try {
       final response = await _authProvider.getCurrentUser();
@@ -228,25 +203,19 @@ class AuthController extends GetxController {
 
         user.value = userData;
 
-         _storageService.saveUser(userData);
+        _storageService.saveUser(userData);
       }
     } catch (e) {
       debugPrint('Error fetching user: $e');
     }
   }
 
-  // ============================================================
-  // CLEAR ERROR
-  // ============================================================
-
+  /// Clear Error
   void clearError() {
     errorMessage.value = '';
   }
 
-  // ============================================================
-  // ERROR MESSAGE
-  // ============================================================
-
+  /// Error Message
   String _cleanErrorMessage(Object error) {
     final message = error.toString();
 
@@ -257,4 +226,3 @@ class AuthController extends GetxController {
     return message;
   }
 }
-

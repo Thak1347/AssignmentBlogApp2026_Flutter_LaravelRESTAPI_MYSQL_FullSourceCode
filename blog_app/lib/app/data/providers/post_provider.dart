@@ -8,46 +8,37 @@ import '../services/api_service.dart';
 class PostProvider extends GetxService {
   final ApiService _apiService = Get.find<ApiService>();
 
-  // ============================================================
-  // GET POSTS
-  // ============================================================
-
+  // Get Posts
   Future<dynamic> getPosts() async {
     try {
       final response = await _apiService.get('/posts');
-      log('✅ Posts fetched successfully');
+      log('Posts fetched successfully');
       return response.data;
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Get posts error: $e');
+      log('Get posts error: $e');
       throw e.toString();
     }
   }
 
-  // ============================================================
-  // GET SINGLE POST
-  // ============================================================
-
+  // Get single post
   Future<Map<String, dynamic>> getPost(int id) async {
     try {
       final response = await _apiService.get('/posts/$id');
-      log('✅ Post $id fetched successfully');
+      log('Post $id fetched successfully');
       return response.data;
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Get post error: $e');
+      log('Get post error: $e');
       throw e.toString();
     }
   }
 
-  // ============================================================
-  // CREATE POST
-  // ============================================================
-
+  // Create Post
   Future<Map<String, dynamic>> createPost({
     required String title,
     String? content,
@@ -74,21 +65,18 @@ class PostProvider extends GetxService {
       }
 
       final response = await _apiService.postFormData('/posts', formData);
-      log('✅ Post created successfully');
+      log('Post created successfully');
       return response.data;
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Create post error: $e');
+      log('Create post error: $e');
       throw e.toString();
     }
   }
 
-  // ============================================================
-  // UPDATE POST - FIXED
-  // ============================================================
-
+  // update the post
   Future<Map<String, dynamic>> updatePost({
     required int id,
     required String title,
@@ -114,10 +102,9 @@ class PostProvider extends GetxService {
             ),
           ),
         );
-        
 
         final response = await _apiService.putFormData('/posts/$id', formData);
-        log('✅ Post $id updated successfully with image');
+        log('Post $id updated successfully with image');
         return response.data;
       } else {
         // No image, use regular JSON
@@ -125,78 +112,37 @@ class PostProvider extends GetxService {
           '/posts/$id',
           data: {'title': title, 'content': content},
         );
-        log('✅ Post $id updated successfully');
+        log('Post $id updated successfully');
         return response.data;
       }
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Update post error: $e');
+      log('Update post error: $e');
       throw e.toString();
     }
   }
 
-  // ============================================================
-  // DELETE POST
-  // ============================================================
-
+  // Delete the post
   Future<void> deletePost(int id) async {
     try {
       await _apiService.delete('/posts/$id');
-      log('✅ Post $id deleted successfully');
+      log('Post $id deleted successfully');
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Delete post error: $e');
+      log('Delete post error: $e');
       throw e.toString();
     }
   }
 
-  // ============================================================
-  // LIKE POST - FIXED (if your API supports it)
-  // ============================================================
-
-  // Future<Map<String, dynamic>> likePost(int id) async {
-  //   try {
-  //     final response = await _apiService.post(
-  //       '/posts/$id/like',
-  //       data: {}, // Empty data
-  //     );
-  //     log('✅ Post $id liked');
-  //     return response.data;
-  //   } on DioException catch (e) {
-  //     _handleDioError(e);
-  //     throw _extractErrorMessage(e);
-  //   } catch (e) {
-  //     log('❌ Like post error: $e');
-  //     throw e.toString();
-  //   }
-  // }
-
-  // Future<Map<String, dynamic>> unlikePost(int id) async {
-  //   try {
-  //     final response = await _apiService.post('/posts/$id/unlike', data: {});
-  //     log('✅ Post $id unliked');
-  //     return response.data;
-  //   } on DioException catch (e) {
-  //     _handleDioError(e);
-  //     throw _extractErrorMessage(e);
-  //   } catch (e) {
-  //     log('❌ Unlike post error: $e');
-  //     throw e.toString();
-  //   }
-  // }
-
-  // ============================================================
-  // PRIVATE HELPER METHODS
-  // ============================================================
-
+  /// Private helper methods
   void _handleDioError(DioException e) {
-    log('❌ Dio Error: ${e.response?.statusCode} - ${e.message}');
+    log('Dio Error: ${e.response?.statusCode} - ${e.message}');
     if (e.response != null) {
-      log('📦 Error Response Data: ${e.response?.data}');
+      log('Error Response Data: ${e.response?.data}');
     }
   }
 

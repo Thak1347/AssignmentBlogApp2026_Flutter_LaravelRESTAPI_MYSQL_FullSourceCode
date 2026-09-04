@@ -12,7 +12,7 @@ class CommentProvider extends GetxService {
     try {
       final response = await _apiService.dio.get('/posts/$postId/comments');
       log(
-        '✅ Comments fetched for post $postId: ${response.data is List ? response.data.length : 0} comments',
+        'Comments fetched for post $postId: ${response.data is List ? response.data.length : 0} comments',
       );
 
       if (response.data is List) {
@@ -26,7 +26,7 @@ class CommentProvider extends GetxService {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Get comments error: $e');
+      log('Get comments error: $e');
       throw e.toString();
     }
   }
@@ -41,13 +41,13 @@ class CommentProvider extends GetxService {
         '/posts/$postId/comments',
         data: {'content': content},
       );
-      log('✅ Comment added to post $postId');
+      log('Comment added to post $postId');
       return response.data;
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Add comment error: $e');
+      log('Add comment error: $e');
       throw e.toString();
     }
   }
@@ -56,12 +56,12 @@ class CommentProvider extends GetxService {
   Future<void> deleteComment(int commentId) async {
     try {
       await _apiService.dio.delete('/comments/$commentId');
-      log('✅ Comment $commentId deleted');
+      log('Comment $commentId deleted');
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Delete comment error: $e');
+      log('Delete comment error: $e');
       throw e.toString();
     }
   }
@@ -76,13 +76,13 @@ class CommentProvider extends GetxService {
         '/comments/$commentId',
         data: {'content': content},
       );
-      log('✅ Comment $commentId updated');
+      log('Comment $commentId updated');
       return response.data;
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Update comment error: $e');
+      log('Update comment error: $e');
       throw e.toString();
     }
   }
@@ -91,13 +91,13 @@ class CommentProvider extends GetxService {
   Future<Map<String, dynamic>> likeComment(int commentId) async {
     try {
       final response = await _apiService.dio.post('/comments/$commentId/like');
-      log('✅ Comment $commentId liked');
+      log('Comment $commentId liked');
       return response.data;
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Like comment error: $e');
+      log('Like comment error: $e');
       throw e.toString();
     }
   }
@@ -108,13 +108,13 @@ class CommentProvider extends GetxService {
       final response = await _apiService.dio.post(
         '/comments/$commentId/unlike',
       );
-      log('✅ Comment $commentId unliked');
+      log('Comment $commentId unliked');
       return response.data;
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Unlike comment error: $e');
+      log('Unlike comment error: $e');
       throw e.toString();
     }
   }
@@ -129,13 +129,13 @@ class CommentProvider extends GetxService {
         '/comments/$commentId/report',
         data: {'reason': reason},
       );
-      log('✅ Comment $commentId reported');
+      log('Comment $commentId reported');
       return response.data;
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Report comment error: $e');
+      log('Report comment error: $e');
       throw e.toString();
     }
   }
@@ -144,26 +144,24 @@ class CommentProvider extends GetxService {
   Future<Map<String, dynamic>> getComment(int commentId) async {
     try {
       final response = await _apiService.dio.get('/comments/$commentId');
-      log('✅ Comment $commentId fetched');
+      log('Comment $commentId fetched');
       return response.data;
     } on DioException catch (e) {
       _handleDioError(e);
       throw _extractErrorMessage(e);
     } catch (e) {
-      log('❌ Get comment error: $e');
+      log('Get comment error: $e');
       throw e.toString();
     }
   }
 
-  // ============================================================
-  // PRIVATE HELPER METHODS
-  // ============================================================
+/// Private Helper Methods
 
   /// Handle Dio errors with logging
   void _handleDioError(DioException e) {
-    log('❌ Dio Error: ${e.response?.statusCode} - ${e.message}');
+    log('Dio Error: ${e.response?.statusCode} - ${e.message}');
     if (e.response != null) {
-      log('📦 Error Response Data: ${e.response?.data}');
+      log('Error Response Data: ${e.response?.data}');
     }
   }
 

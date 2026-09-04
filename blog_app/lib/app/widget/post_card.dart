@@ -25,9 +25,7 @@ class PostCard extends GetView<HomeController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // =========================
-          // POST IMAGE
-          // =========================
+          /// Post Image
           if (post.image?.isNotEmpty == true)
             GestureDetector(
               onTap: () => controller.navigateToPostDetails(post.id),
@@ -58,9 +56,7 @@ class PostCard extends GetView<HomeController> {
               ),
             ),
 
-          // =========================
-          // CONTENT
-          // =========================
+            /// Content
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -93,9 +89,7 @@ class PostCard extends GetView<HomeController> {
 
                 const SizedBox(height: 12),
 
-                // =========================
-                // AUTHOR + ACTIONS
-                // =========================
+                /// Author and Action
                 Row(
                   children: [
                     CircleAvatar(
@@ -131,9 +125,7 @@ class PostCard extends GetView<HomeController> {
                       ),
                     ),
 
-                    // =========================
-                    // EDIT + DELETE
-                    // =========================
+                    /// Edit and Delete
                     if (isOwner) ...[
                       // EDIT
                       IconButton(
@@ -153,15 +145,14 @@ class PostCard extends GetView<HomeController> {
                         },
                       ),
 
-                      // DELETE
+                      // Delete
                       IconButton(
                         icon: const Icon(
                           Icons.delete_outline,
                           color: Colors.red,
                         ),
                         onPressed: () {
-                          // IMPORTANT:
-                          // Use PostsController here, not HomeController.
+                          
                           final postsController = Get.find<PostsController>();
 
                           postsController.showDeleteConfirmation(post.id);
@@ -173,9 +164,7 @@ class PostCard extends GetView<HomeController> {
 
                 const SizedBox(height: 8),
 
-                // =========================
-                // COMMENTS + READ MORE
-                // =========================
+                /// Comment and ReadMore
                 Row(
                   children: [
                     const Icon(
