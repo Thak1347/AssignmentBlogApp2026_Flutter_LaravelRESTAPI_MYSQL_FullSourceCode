@@ -92,9 +92,8 @@ class ApiService extends GetxService {
     return await _dio.post(path, data: formData);
   }
 
-  // PUT with FormData (Fix for Laravel / PHP backends)
+  // PUT with FormData 
   Future<Response> putFormData(String path, FormData formData) async {
-    // Append _method field to support multipart updates in backends like Laravel
     formData.fields.add(const MapEntry('_method', 'PUT'));
     return await _dio.post(path, data: formData);
   }
